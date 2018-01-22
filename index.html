@@ -10,25 +10,83 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Prosto+One|Tenor+Sans" rel="stylesheet">
   </head>
   <body>
     <div class="row">
-      <div class="col-md-4"></div>  
-      <div class="col-md-4">
+      <div class="col-md-3"></div>  
+      <div class="col-md-6">
         <div class="card profile text-center">
-          <img src="./images/me.jpg" height="40%" width="40%" class="profile-img">
+          <img src="./images/me.jpg" height="25%" width="25%" class="profile-img">
           <div class="content">
             <h4 class="headings">TANAY SHANDILYA</h4>
+            <hr>
+            <h5>Some of my skills</h5>
+            <h6><span class="badge badge-primary">Data Science</span>&nbsp;&nbsp;<span class="badge badge-success">Machine Learning</span>&nbsp;&nbsp;<span class="badge badge-danger">Data Analytics</span>&nbsp;&nbsp;<span class="badge badge-info">Web Development</span></h6>
+            <hr>
+            <center id="output_data"></center>
+            <form method="POST" id="contact_from">
+              <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control form-control-sm" placeholder="First name" id="firstname">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control form-control-sm" placeholder="Last name" id="lastname">
+                </div>
+              </div>
+              <div class="row" style="margin-top: 1.5%">
+                <div class="col">
+                  <input type="email" class="form-control form-control-sm" placeholder="Email" id="email">
+                </div>
+                <div class="col">
+                  <input type="tel" class="form-control form-control-sm" placeholder="Contact Number" id="tel">
+                </div>                
+              </div>
+              <div class="row" style="margin-top: 1.5%">
+                  <textarea class="form-control form-control-sm" placeholder="Message" id="message"></textarea>
+              </div>
+              <button type="submit" class="btn btn-outline-primary btn-sm" style="margin-top: 1.5%" value=submit id="submit">SEND <i id="spin_icon" class="fa fa-refresh fa-spin" aria-hidden="true" style="display:none;"></i><i id="success_icon" class="fa fa-check" aria-hidden="true" style="display:none;"></i></button>
+            </form>
           </div>
         </div>
       </div>  
-      <div class="col-md-4"></div>  
+      <div class="col-md-3"></div>  
     </div>
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          $('#contact_from').on('submit', function(e){
+              //Stop the form from submitting itself to the server.
+              $('#spin_icon').show();
+              e.preventDefault();
+
+              var firstname = $('#firstname').val();
+              var lastname  = $('#lastname').val();
+              var email     = $('#email').val();
+              var tel     = $('#tel').val();
+              var message   = $('#message').val();
+              var submit  = $('#submit').val();
+
+              $.ajax({
+                  type: "POST",
+                  url: 'https://reoft.com/tanay.githubhandler.php',
+                  data: {submit: submit,firstname: firstname,lastname: lastname,email: email,tel: tel,message: message},
+                  success: function(data){
+                      //window.alert(data);
+                      $('#output_data').html(data);
+                      $('#spin_icon').hide();
+                      $('#success_icon').show();
+                  }
+              });
+          });
+      });
+      </script>
+
   </body>
 </html>

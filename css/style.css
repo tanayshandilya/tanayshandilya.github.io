@@ -1,0 +1,29 @@
+html{
+	overflow-x: hidden;
+	font-family: 'Tenor Sans', sans-serif;
+}
+.headings{
+	font-family: 'Prosto One', cursive;
+	color: #560082;
+}
+.profile{
+	border-top: 5px solid #560082 !important;
+	margin-top: 40%;
+	box-shadow: 0 8px 30px -6px rgba(0,0,0,.6);
+	transition: box-shadow 0.6s ease-out;
+}
+.profile:hover{
+	box-shadow: 0 8px 10px -6px rgba(0,0,0,.6);
+	transition: box-shadow 0.6s ease-out;
+}
+.profile-img{
+	border-radius: 100%;
+	border: 5px solid #fff;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: -22%;
+	box-shadow: 0 0px 58px -8px rgba(86, 0, 130, 0.33);
+}
+.content{
+	margin-top: 5%;
+}

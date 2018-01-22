@@ -28,23 +28,25 @@
             <center id="output_data"></center>
             <form method="POST" id="contact_from">
               <div class="row">
-                <div class="col">
-                  <input type="text" class="form-control form-control-sm" placeholder="First name" id="firstname" required="">
+                <div class="col-sm-6" style="margin-bottom: 1.5%">
+                  <input type="text" class="form-control form-control-sm" placeholder="First name" id="firstname" required>
                 </div>
-                <div class="col">
-                  <input type="text" class="form-control form-control-sm" placeholder="Last name" id="lastname" required="">
+                <div class="col-sm-6" style="margin-bottom: 1.5%">
+                  <input type="text" class="form-control form-control-sm" placeholder="Last name" id="lastname" required>
                 </div>
               </div>
-              <div class="row" style="margin-top: 1.5%">
-                <div class="col">
-                  <input type="email" class="form-control form-control-sm" placeholder="Email" id="email" required="">
+              <div class="row">
+                <div class="col-sm-6" style="margin-bottom: 1.5%">
+                  <input type="email" class="form-control form-control-sm" placeholder="Email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                 </div>
-                <div class="col">
-                  <input type="tel" class="form-control form-control-sm" placeholder="Contact Number" id="tel" required="">
+                <div class="col-sm-6" style="margin-bottom: 1.5%">
+                  <input type="tel" class="form-control form-control-sm" placeholder="Contact Number" id="tel" required>
                 </div>                
               </div>
-              <div class="row" style="margin-top: 1.5%">
+              <div class="row">
+                <div class="col-md-12">
                   <textarea class="form-control form-control-sm" placeholder="Message" id="message"></textarea>
+                </div>
               </div>
               <button type="submit" class="btn btn-outline-primary btn-sm" style="margin-top: 1.5%" value=submit id="submit">SEND <i id="spin_icon" class="fa fa-refresh fa-spin" aria-hidden="true" style="display:none;"></i><i id="success_icon" class="fa fa-check" aria-hidden="true" style="display:none;"></i></button>
             </form>

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Prosto+One|Tenor+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Prosto+One|Montserrat" rel="stylesheet">
   </head>
   <body>
     <div class="row">
@@ -23,24 +23,28 @@
             <h4 class="headings">TANAY SHANDILYA</h4>
             <hr>
             <h5>Some of my skills</h5>
-            <h6><span class="badge badge-primary">Data Science</span>&nbsp;&nbsp;<span class="badge badge-success">Machine Learning</span>&nbsp;&nbsp;<span class="badge badge-danger">Data Analytics</span>&nbsp;&nbsp;<span class="badge badge-info">Web Development</span></h6>
+            <h6><span class="badge badge-primary">Data Science</span><span class="badge badge-success">Machine Learning</span><span class="badge badge-danger">Data Analytics</span><span class="badge badge-info">Web Development</span></h6>
             <hr>
             <center id="output_data"></center>
             <form method="POST" id="contact_from">
               <div class="row">
                 <div class="col-sm-6" style="margin-bottom: 1.5%">
-                  <input type="text" class="form-control form-control-sm" placeholder="First name" id="firstname" required>
+                  <input type="text" class="form-control form-control-sm" placeholder="First name" id="firstname">
+                  <p id="firstnameerror" class="error-msg">Please fill out this field!!</p>
                 </div>
                 <div class="col-sm-6" style="margin-bottom: 1.5%">
-                  <input type="text" class="form-control form-control-sm" placeholder="Last name" id="lastname" required>
+                  <input type="text" class="form-control form-control-sm" placeholder="Last name" id="lastname">
+                  <p id="lastnameerror" class="error-msg">Please fill out this field!!</p>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-6" style="margin-bottom: 1.5%">
-                  <input type="email" class="form-control form-control-sm" placeholder="Email" id="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                  <input type="email" class="form-control form-control-sm" placeholder="Email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                  <p id="emailerror" class="error-msg">Please fill out this field!!</p>
                 </div>
                 <div class="col-sm-6" style="margin-bottom: 1.5%">
-                  <input type="tel" class="form-control form-control-sm" placeholder="Contact Number" id="tel" required>
+                  <input type="tel" class="form-control form-control-sm" placeholder="Contact Number" id="tel">
+                  <p id="telerror" class="error-msg">Please fill out this field!!</p>
                 </div>                
               </div>
               <div class="row">
@@ -65,27 +69,49 @@
       $(document).ready(function(){
           $('#contact_from').on('submit', function(e){
               //Stop the form from submitting itself to the server.
-              $('#spin_icon').show();
               e.preventDefault();
 
-              var firstname = $('#firstname').val();
-              var lastname  = $('#lastname').val();
-              var email     = $('#email').val();
-              var tel     = $('#tel').val();
-              var message   = $('#message').val();
-              var submit  = $('#submit').val();
-
-              $.ajax({
-                  type: "POST",
-                  url: 'https://reoft.com/tanay.githubhandler.php',
-                  data: {submit: submit,firstname: firstname,lastname: lastname,email: email,tel: tel,message: message},
-                  success: function(data){
-                      //window.alert(data);
-                      $('#output_data').html(data);
-                      $('#spin_icon').hide();
-                      $('#success_icon').show();
+              if(!$('#firstname').val()) {
+                $('#firstname').css({"border-left":"5px solid red","border-color":"red"});
+                $('#firstnameerror').show();  
+              }
+              else if(!$('#lastname').val()) {
+                    $('#lastname').css({"border-left":"5px solid red","border-color":"red"});
+                    $('#lastnameerror').show();    
                   }
-              });
+              else if(!$('#email').val()) {
+                        $('#email').css({"border-left":"5px solid red","border-color":"red"});
+                        $('#emailerror').show();    
+                      }
+              else if(!$('#tel').val()){
+                              $('#tel').css({"border-left":"5px solid red","border-color":"red"});
+                              $('#telerror').show();
+                            }
+              else {
+                  $('#spin_icon').show();
+                  $('.error-msg').hide();
+                  $('input').css({"border-left":"5px solid #560082","border-color":"#560082"});
+
+                  var firstname = $('#firstname').val();
+                  var lastname  = $('#lastname').val();
+                  var email     = $('#email').val();
+                  var tel     = $('#tel').val();
+                  var message   = $('#message').val();
+                  var submit  = $('#submit').val();
+
+                  $.ajax({
+                        type: "POST",
+                        url: 'https://reoft.com/tanay.githubhandler.php',
+                        data: {submit: submit,firstname: firstname,lastname: lastname,email: email,tel: tel,message: message},
+                        success: function(data){
+                            //window.alert(data);
+                            $('#output_data').html(data);
+                            $('#spin_icon').hide();
+                            $('#success_icon').show();
+                        }
+                    });
+                }
+
           });
       });
       </script>

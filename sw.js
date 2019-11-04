@@ -1,7 +1,7 @@
 const cacheName = 'pwa-v2019-11-05';
 const cacheAssets = [
   'index.html',
-  '/assets/js/build.7af6b8853f094125.js',
+  '/assets/js/build.7799d3c41cf3c025.js',
   '/assets/js/app.a8e332a6d1a98dd2.js',
   '/assets/manifest.json',
   '/assets/fonts/intel-clear-latin.ttf',

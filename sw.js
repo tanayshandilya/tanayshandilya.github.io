@@ -1,4 +1,4 @@
-const cacheName = 'pwa-v2019-11-04';
+const cacheName = 'pwa-v2019-11-05';
 const cacheAssets = [
   'index.html',
   '/assets/js/build.7af6b8853f094125.js',

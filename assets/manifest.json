@@ -1,0 +1,38 @@
+{
+  "name": "Tanay Shandilya",
+  "short_name": "tanayshandilya.github.io",
+  "description": "Tanay is a cloud architect, developer, data science enthusiast, and also a cyber security student...",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#35383b",
+  "icons": [
+    {
+      "src": "/assets/images/icon/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/icon/icon-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#202124",
+  "orientation" : "portrait"
+}
